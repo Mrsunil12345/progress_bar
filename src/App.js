@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+//import Progress from "./components/Progress";
+import ProgressBar from "./components/ProgressBar";
+import { useEffect, useState } from "react";
 
 function App() {
+  let [value, setValue] = useState(0);
+  useEffect(() => {
+    setInterval(() => {
+      setValue((val) => {
+        return val + 1;
+      });
+    }, 100);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProgressBar value={value} />
     </div>
   );
 }
